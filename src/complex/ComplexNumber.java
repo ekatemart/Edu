@@ -45,4 +45,9 @@ public class ComplexNumber {
        double acos = Math.acos(real/ComplexNumber.module(this));
        return (imagine >= 0) ? acos : 2 * Math.PI - acos;
     }
+
+    public boolean equals(Object number) {
+        // todo: implement
+        return false;
+    }
 }
