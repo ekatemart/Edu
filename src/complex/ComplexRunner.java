@@ -10,6 +10,7 @@ public class ComplexRunner {
         System.out.println(a.multiply(c));
         System.out.println(ComplexNumber.multiply(a, b));
         System.out.println(a.arg());
+        System.out.println(ComplexNumber.divide(a, b));
     }
 }
 
