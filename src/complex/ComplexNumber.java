@@ -12,6 +12,12 @@ public class ComplexNumber {
         this.imagine = imagine;
     }
 
+    /**
+     * Complex numbers multiplication
+     * @param a first multiplier
+     * @param b second multiplier
+     * @return multiplication result
+     */
     public static ComplexNumber multiply(ComplexNumber a, ComplexNumber b) { //Static multiplication
         return a.multiply(b);
     }
@@ -102,6 +108,13 @@ public class ComplexNumber {
         ComplexNumber b = new ComplexNumber();
         b.real = ComplexNumber.multiply(this, conjugate(a)).real / multiply(a, conjugate(a)).real;
         b.imagine = ComplexNumber.multiply(this, conjugate(a)).imagine / multiply(a, conjugate(a)).real;
+        return b;
+    }
+
+    public ComplexNumber add(double a){
+        ComplexNumber b = new ComplexNumber();
+        b.real = real + a;
+        b.imagine = imagine;
         return b;
     }
 }
