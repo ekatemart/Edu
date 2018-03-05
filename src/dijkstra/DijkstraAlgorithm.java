@@ -77,6 +77,7 @@ public class DijkstraAlgorithm {
         } else {
             out.println(route.get(n-1));
         }
+        out.close();
     }
 }
 
