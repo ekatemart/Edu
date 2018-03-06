@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
+
 public class DijkstraAlgorithm {
 
     static class Edge {
@@ -29,14 +30,13 @@ public class DijkstraAlgorithm {
         boolean[] block = new boolean[n];
         double closerPath;
         int closerVertex = 0;
-        List<String> route = new ArrayList<>(n);
+        int[] whereCameFrom = new int[n];
+        int temp;
+        List<Integer> route = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
-            route.add("");
         }
-
-        route.set(0, "1");
 
         for (int i = 0; i < m; i++) {
             int a = in.nextInt() - 1;
@@ -65,17 +65,26 @@ public class DijkstraAlgorithm {
             for (int k = 0; k < graph.get(closerVertex).size(); k++) { // просматриваю рёбра из текущей вершины
                 if ((path[closerVertex] + graph.get(closerVertex).get(k).weight) < path[graph.get(closerVertex).get(k).vertex]) {
                     path[graph.get(closerVertex).get(k).vertex] = path[closerVertex] + graph.get(closerVertex).get(k).weight;
-                    route.set(graph.get(closerVertex).get(k).vertex, route.get(closerVertex) + " " + (graph.get(closerVertex).get(k).vertex + 1));
+                    whereCameFrom[graph.get(closerVertex).get(k).vertex] = closerVertex;
                 }
             }
             block[closerVertex] = true;
 
         }
 
+        route.add(n);
+        temp = n - 1;
+        while (temp != 0){
+            route.add(whereCameFrom[temp] + 1);
+            temp = whereCameFrom[temp];
+        }
+
         if (path[n - 1] == Double.MAX_VALUE) {
             out.println("-1");
         } else {
-            out.println(route.get(n-1));
+            for (int i = route.size() - 1; -1 < i; i--){
+                out.print(route.get(i) + " ");
+            }
         }
         out.close();
     }
