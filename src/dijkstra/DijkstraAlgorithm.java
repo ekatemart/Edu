@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import java.util.stream.Collectors;
 
 
 public class DijkstraAlgorithm {
@@ -32,7 +32,7 @@ public class DijkstraAlgorithm {
         int closerVertex = 0;
         int[] whereCameFrom = new int[n];
         int temp;
-        List<Integer> route = new ArrayList<>();
+        List<Integer> routes = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
@@ -72,18 +72,21 @@ public class DijkstraAlgorithm {
 
         }
 
-        route.add(n);
+        routes.add(n);
         temp = n - 1;
-        while (temp != 0){
-            route.add(whereCameFrom[temp] + 1);
+        while (temp != 0) {
+            routes.add(whereCameFrom[temp] + 1);
             temp = whereCameFrom[temp];
         }
+
+        String listString = routes.stream().map(Object::toString)
+                .collect(Collectors.joining(" "));
 
         if (path[n - 1] == Double.MAX_VALUE) {
             out.println("-1");
         } else {
-            for (int i = route.size() - 1; -1 < i; i--){
-                out.print(route.get(i) + " ");
+            for (int i = routes.size() - 1; -1 < i; i--) {
+                out.print(routes.get(i) + " ");
             }
         }
         out.close();
