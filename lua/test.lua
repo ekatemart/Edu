@@ -1,3 +1,4 @@
-package.path = './modules/?.lua;' .. package.path
+local list = {1, 2, 3}
+local table = {list = list}
 
-require "double_ended_queue"
+print(#table.list)
