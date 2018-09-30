@@ -8,10 +8,10 @@
 
 package.path = './modules/?.lua;' .. package.path
 
+local Set = require "set"
 local dump = require "dump"
 
-print(dump(getmetatable("hi")))
-
+--print(dump(getmetatable("hi")))
 
 local function readOnly (t)
     local proxy = {}
@@ -24,3 +24,10 @@ local function readOnly (t)
     setmetatable(proxy, mt)
     return proxy
 end
+
+
+local a = Set.new {1,2,3}
+local b = Set.new {3,4}
+print(a - b)
+print(#(a - b))
+

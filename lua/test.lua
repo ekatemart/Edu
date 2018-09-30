@@ -1,4 +1,4 @@
-local list = {1, 2, 3}
-local table = {list = list}
+local t = {1, 2, 3}
+t[0] = 0
 
-print(#table.list)
+print(table.concat(t, ", "))
